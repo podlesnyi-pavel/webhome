@@ -1,3 +1,4 @@
+import './App.scss';
 import { FormPost } from './components/FormPost';
 
 const App = () => {
