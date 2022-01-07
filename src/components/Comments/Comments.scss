@@ -2,6 +2,7 @@
 
 .comments {
   margin-top: 80px;
+  margin-bottom: 40px;
 
   &__header {
     display: flex;
@@ -10,9 +11,6 @@
     border-bottom: 2px solid $color-dark-gray;
     font-weight: 500;
   }
-
-  // &__responses {}
-  // &__sorts {}
 
   &__sort {
     padding: 4px 10px;
@@ -32,5 +30,30 @@
     }
   }
 
+  &__comment {
+    display: flex;
+    padding: 20px 0;
 
+    &:not(:first-child) {
+      border-top: 1px solid $color-dark-gray;
+    }
+  }
+
+  &__next-button {
+    display: block;
+    margin: 0 auto;
+    padding: 8px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $color-purple;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    transition: $transition-duration-default;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 8px $color-purple;
+    }
+  }
 }

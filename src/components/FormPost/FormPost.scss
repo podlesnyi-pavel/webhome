@@ -37,5 +37,11 @@
     font-weight: 600;
     text-transform: uppercase;
     color: #fff;
+    transition: $transition-duration-default;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 8px $color-purple;
+    }
   }
 }
