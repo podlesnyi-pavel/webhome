@@ -2,7 +2,6 @@ import './Comment.scss';
 
 export const Comment = ({ name, text, time }) => {
   const currentDate = new Date();
-  // console.log(+currentDate - +time);
 
   const getDifferenceTime = () => {
     return currentDate.getDate();

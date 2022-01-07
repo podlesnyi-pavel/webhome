@@ -1,7 +1,7 @@
 import './FormPost.scss';
 import { useState } from "react";
 
-export const FormPost = () => {
+export const FormPost = ({ createNewComment }) => {
   const [name, setName] = useState('');
   const [comments, setComments] = useState('');
 
@@ -40,7 +40,13 @@ export const FormPost = () => {
           onChange={(event) => setComments(event.target.value)}
         />
 
-        <button className="form-post__submit" type="submit">post</button>
+        <button
+          className="form-post__submit"
+          type="submit"
+          onClick={() => createNewComment()}
+        >
+          post
+        </button>
       </label>
     </form>
   );

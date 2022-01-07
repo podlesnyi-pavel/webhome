@@ -2,14 +2,13 @@ import './App.scss';
 import { useEffect, useState } from 'react';
 import { Comments } from './components/Comments';
 import { FormPost } from './components/FormPost';
-import { Context } from './context';
 
 const App = () => {
   const [comments, setComments] = useState(false);
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getComments = () => {
-    fetch('https://jordan.ashton.fashion/api/goods/30/comments')
+    fetch(`https://jordan.ashton.fashion/api/goods/30/comments?page=${currentPage}`)
       .then(response => response.json())
       .then(comments => {
         setComments(comments);
@@ -17,17 +16,40 @@ const App = () => {
       });
   };
 
+  const createNewComment = () => {
+    fetch('https://jordan.ashton.fashion/api/goods/30/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        dawd: 'wadwa',
+      })
+    });
+  };
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const setPage = (event) => {
+    setCurrentPage(Number(event.target.value));
+  };
+
   useEffect(() => {
     getComments();
-  }, []);
+  }, [currentPage]);
 
   return (
-    <Context.Provider value={{ comments }}>
-      <div className="App">
-        <FormPost />
-        <Comments />
-      </div>
-    </Context.Provider>
+    <div className="App">
+      <FormPost createNewComment={createNewComment} />
+      <Comments
+        nextPage={nextPage}
+        comments={comments}
+        setPage={setPage}
+        currentPage={currentPage}
+      />
+    </div>
   );
 }
 

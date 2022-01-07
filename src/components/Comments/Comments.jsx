@@ -1,12 +1,15 @@
 import './Comments.scss';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import { Comment } from '../Comment/Comment';
-import { Context } from '../../context';
 
-export const Comments = () => {
+export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
   const [activeSort, setActiveSort] = useState('Most Liked');
-  const { comments } = useContext(Context);
+  // const amountPages = [];
+
+  // for (let i = 1; i <= comments.last_page; i++) {
+  //   amountPages.push(i);
+  // }
 
   return (
     <div className="comments">
@@ -45,20 +48,41 @@ export const Comments = () => {
         </div>
       </div>
       {comments &&
-        <ul className="comments__comments">
-          {comments.data.map(comment => (
-            <li key={comment.id} className='comments__comment'>
+        <>
+          <ul className="comments__comments">
+            {comments.data.map(comment => (
+              <li key={comment.id} className='comments__comment'>
                 <Comment
                   name={comment.name}
                   text={comment.text}
-                  time={comment.created_at}
-                />
+                  time={comment.created_at} />
               </li>
-          ))}
-        </ul>
-      }
+            ))}
+          </ul>
+          
+          <div className="comments__pagination">
+            {comments.links.slice(1, -1).map((link, i) => (
+              <button
+                key={i}
+                className={classNames(
+                  link.label === currentPage && 'comments__pagination-btn'
+                )}
+                value={link.label}
+                onClick={setPage}
+                disabled={!link.url}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
 
-      <button className='comments__next-button'>Показать еще</button>
+          {currentPage !== comments.last_page &&
+            <button className='comments__next-button' onClick={nextPage}>
+              Показать еще
+            </button>
+          }
+        </>
+      }
     </div>
   );
 };

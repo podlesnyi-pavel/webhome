@@ -39,9 +39,19 @@
     }
   }
 
+  &__pagination {
+    display: flex;
+    justify-content: center;
+
+    &-btn {
+      background-color: $color-purple;
+      transition-duration: $transition-duration-default;
+    }
+  }
+
   &__next-button {
     display: block;
-    margin: 0 auto;
+    margin: 10px auto 0;
     padding: 8px;
     border: none;
     border-radius: $border-radius;
