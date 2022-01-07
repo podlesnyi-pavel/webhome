@@ -5,11 +5,6 @@ import { Comment } from '../Comment/Comment';
 
 export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
   const [activeSort, setActiveSort] = useState('Most Liked');
-  // const amountPages = [];
-
-  // for (let i = 1; i <= comments.last_page; i++) {
-  //   amountPages.push(i);
-  // }
 
   return (
     <div className="comments">

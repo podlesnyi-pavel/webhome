@@ -16,15 +16,13 @@ const App = () => {
       });
   };
 
-  const createNewComment = () => {
+  const createNewComment = (object) => {
     fetch('https://jordan.ashton.fashion/api/goods/30/comments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
-      body: JSON.stringify({
-        dawd: 'wadwa',
-      })
+      body: JSON.stringify(object),
     });
   };
 
