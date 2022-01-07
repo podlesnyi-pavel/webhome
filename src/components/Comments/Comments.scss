@@ -1,1 +1,36 @@
 @import '../../styles/main.scss';
+
+.comments {
+  margin-top: 80px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 4px;
+    border-bottom: 2px solid $color-dark-gray;
+    font-weight: 500;
+  }
+
+  // &__responses {}
+  // &__sorts {}
+
+  &__sort {
+    padding: 4px 10px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: transparent;
+    transition: $transition-duration-default;
+
+    &:hover,
+    &:focus {
+      background-color: $color-purple;
+      color: $color-white;
+    }
+
+    &--active {
+      color: $color-purple;
+    }
+  }
+
+
+}

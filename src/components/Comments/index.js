@@ -1,1 +1,1 @@
-export * from './FormPost';
+export * from './Comments';
