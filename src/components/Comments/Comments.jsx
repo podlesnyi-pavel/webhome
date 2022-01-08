@@ -43,19 +43,25 @@ export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
           </ul>
           
           <div className="comments__pagination">
-            {comments.links.slice(1, -1).map((link, i) => (
-              <button
-                key={i}
-                className={classNames(
-                  link.label === currentPage && 'comments__pagination-btn'
-                )}
-                value={link.label}
-                onClick={setPage}
-                disabled={!link.url}
-              >
-                {link.label}
-              </button>
-            ))}
+            {comments.links.slice(1, -1).map((link, i) => {
+              if (!link.url) {
+                return <div key={i} className='comments__pagination-dots'>...</div>
+              }
+
+              return (
+                <button
+                  key={i}
+                  className={classNames(
+                    'comments__pagination-btn',
+                    link.label === currentPage && 'comments__pagination-btn--active',
+                  )}
+                  value={link.label}
+                  onClick={setPage}
+                >
+                  {link.label}
+                </button>
+              )
+            })}
           </div>
 
           {currentPage !== comments.last_page &&

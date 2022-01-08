@@ -47,10 +47,24 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  
+  &__pagination-dots {
+    padding: 0 2px;
+    cursor: default;
+  }
 
-    &-btn {
+  &__pagination-btn {
+    border: 1px solid #000;
+    border-radius: $border-radius;
+    transition-duration: $transition-duration-default;
+
+    &:hover {
+      background-color: $color-light-purple;
+    }
+
+    &--active {
       background-color: $color-purple;
-      transition-duration: $transition-duration-default;
     }
   }
 
