@@ -1,0 +1,19 @@
+@import '../../styles/main.scss';
+
+.sort-button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: $border-radius;
+  background-color: transparent;
+  transition: $transition-duration-default;
+
+  &:hover,
+  &:focus {
+    background-color: $color-purple;
+    color: $color-white;
+  }
+
+  &--active {
+    color: $color-purple;
+  }
+}

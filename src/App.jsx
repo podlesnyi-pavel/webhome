@@ -12,7 +12,6 @@ const App = () => {
       .then(response => response.json())
       .then(comments => {
         setComments(comments);
-        console.log(comments);
       });
   };
 

@@ -2,6 +2,7 @@ import './Comments.scss';
 import { useState } from 'react';
 import classNames from 'classnames';
 import { Comment } from '../Comment/Comment';
+import { CMSortButton } from '../CMSortButton/CMSortButton';
 
 export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
   const [activeSort, setActiveSort] = useState('Most Liked');
@@ -11,35 +12,21 @@ export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
       <div className="comments__header">
         <div className="comments__responses">{comments.total} Responses</div>
         <div className="comments__sorts">
-          <button
-            className={classNames(
-              "comments__sort",
-              activeSort === 'Newest' && "comments__sort--active",
-            )}
-            onClick={() => setActiveSort('Newest')}
-          >
-            Newest
-          </button>
-
-          <button
-            className={classNames(
-              "comments__sort",
-              activeSort === 'Most Liked' && "comments__sort--active",
-            )}
-            onClick={() => setActiveSort('Most Liked')}
-          >
-            Most Liked
-          </button>
-
-          <button
-            className={classNames(
-              "comments__sort",
-              activeSort === 'Oldest' && "comments__sort--active",
-            )}
-            onClick={() => setActiveSort('Oldest')}
-          >
-            Oldest
-          </button>
+          <CMSortButton
+            value={'Newest'}
+            activeSort={activeSort}
+            click={() => setActiveSort('Newest')}
+          />
+          <CMSortButton
+            value={'Most Liked'}
+            activeSort={activeSort}
+            click={() => setActiveSort('Most Liked')}
+          />
+          <CMSortButton
+            value={'Oldest'}
+            activeSort={activeSort}
+            click={() => setActiveSort('Oldest')}
+          />
         </div>
       </div>
       {comments &&
