@@ -7,6 +7,24 @@ import { CMSortButton } from '../CMSortButton/CMSortButton';
 export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
   const [activeSort, setActiveSort] = useState('Most Liked');
 
+  const getSortComments = () => {
+    if (activeSort === 'Most Liked') {
+      return comments.data;
+    }
+
+    if (activeSort === 'Oldest') {
+      return [...comments.data].sort((firstComment, secondComment) => (
+        Date.parse(firstComment.created_at) - Date.parse(secondComment.created_at)
+      ));
+    }
+
+    if (activeSort === 'Newest') {
+      return [...comments.data].sort((firstComment, secondComment) => (
+        Date.parse(secondComment.created_at) - Date.parse(firstComment.created_at)
+      ));
+    }
+  };
+
   return (
     <div className="comments">
       <div className="comments__header">
@@ -32,7 +50,7 @@ export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
       {comments &&
         <>
           <ul className="comments__comments">
-            {comments.data.map(comment => (
+            {getSortComments().map(comment => (
               <li key={comment.id} className='comments__comment'>
                 <Comment
                   name={comment.name}
