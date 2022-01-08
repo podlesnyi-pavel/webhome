@@ -7,6 +7,19 @@ export const FormPost = ({ createNewComment }) => {
 
   const postComment = (event) => {
     event.preventDefault();
+
+    const currentDate = new Date();
+
+    createNewComment({
+      id: comments.data[comments.data.length - 1].id + 1,
+      name: name,
+      text: comments,
+      visible: 0,
+      product_id: 30,
+      created_at: currentDate,
+      updated_at: currentDate,
+    })
+
     setName('');
     setComments('');
   };
@@ -43,19 +56,6 @@ export const FormPost = ({ createNewComment }) => {
         <button
           className="form-post__submit"
           type="submit"
-          onClick={() => {
-            const date = new Date();
-
-            createNewComment({
-              id: comments.data[comments.data.length - 1].id + 1,
-              name: name,
-              text: comments,
-              visible: 0,
-              product_id: 30,
-              created_at: date,
-              updated_at: date,
-            })
-          }}
         >
           post
         </button>
