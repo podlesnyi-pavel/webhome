@@ -6,10 +6,32 @@
 
   &__header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding-bottom: 4px;
     border-bottom: 2px solid $color-dark-gray;
     font-weight: 500;
+
+    @media (min-width: 400px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__responses {
+    text-align: center;
+
+    @media (min-width: 400px) {
+      text-align: start;
+    }
+  }
+
+  &__sorts {
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 400px) {
+      justify-content: flex-start;
+    }
   }
 
   &__sort {
@@ -42,6 +64,7 @@
   &__pagination {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
     &-btn {
       background-color: $color-purple;
