@@ -40,7 +40,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <FormPost createNewComment={createNewComment} />
+      <FormPost
+        createNewComment={createNewComment}
+        currentPage={currentPage}
+        lastPage={comments.last_page}
+      />
+
       <Comments
         nextPage={nextPage}
         comments={comments}

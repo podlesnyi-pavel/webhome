@@ -3,25 +3,18 @@ import { useState } from "react";
 
 export const FormPost = ({ createNewComment }) => {
   const [name, setName] = useState('');
-  const [comments, setComments] = useState('');
+  const [newComments, setNewComments] = useState('');
 
   const postComment = (event) => {
     event.preventDefault();
 
-    const currentDate = new Date();
-
     createNewComment({
-      id: comments.data[comments.data.length - 1].id + 1,
       name: name,
-      text: comments,
-      visible: 0,
-      product_id: 30,
-      created_at: currentDate,
-      updated_at: currentDate,
+      text: newComments,
     })
 
     setName('');
-    setComments('');
+    setNewComments('');
   };
 
   return (
@@ -49,8 +42,8 @@ export const FormPost = ({ createNewComment }) => {
           name="comments"
           placeholder="Write a review"
           required
-          value={comments}
-          onChange={(event) => setComments(event.target.value)}
+          value={newComments}
+          onChange={(event) => setNewComments(event.target.value)}
         />
 
         <button
