@@ -3,11 +3,16 @@
 .toogler-theme {
   position: absolute;
   top: 5px;
-  right: -92px;
+  right: 15px;
   width: 90px;
   padding: 5px 10px;
   border: 1px solid;
   border-radius: 20px;
   background-color: transparent;
   color: inherit;
+
+  @media (min-width: 800px) {
+    top: 5px;
+    right: -92px;
+  }
 }
