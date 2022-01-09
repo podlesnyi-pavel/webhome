@@ -1,0 +1,13 @@
+@import '../../styles/main.scss';
+
+.toogler-theme {
+  position: absolute;
+  top: 5px;
+  right: -92px;
+  width: 90px;
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: transparent;
+  color: inherit;
+}

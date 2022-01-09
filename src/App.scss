@@ -1,6 +1,7 @@
 $costat-padding: 15px;
 
 .App {
+  position: relative;
   max-width: 564px + $costat-padding;
   margin: 0 auto;
   padding: 10px $costat-padding;
