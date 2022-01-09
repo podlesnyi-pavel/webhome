@@ -1,29 +1,11 @@
 import './Comments.scss';
 import { useState } from 'react';
-import { Comment } from '../Comment/Comment';
 import { CMSortButton } from '../CMSortButton/CMSortButton';
 import { CMPagination } from '../CMPagination/CMPagination';
+import { CMCommentsList } from '../CMCommentsList/CMCommentsList';
 
 export const Comments = ({ nextPage, comments, currentPage }) => {
   const [activeSort, setActiveSort] = useState('Most Liked');
-
-  const getSortComments = () => {
-    if (activeSort === 'Most Liked') {
-      return comments.data;
-    }
-
-    if (activeSort === 'Oldest') {
-      return [...comments.data].sort((firstComment, secondComment) => (
-        Date.parse(firstComment.created_at) - Date.parse(secondComment.created_at)
-      ));
-    }
-
-    if (activeSort === 'Newest') {
-      return [...comments.data].sort((firstComment, secondComment) => (
-        Date.parse(secondComment.created_at) - Date.parse(firstComment.created_at)
-      ));
-    }
-  };
 
   return (
     <div className="comments">
@@ -49,17 +31,7 @@ export const Comments = ({ nextPage, comments, currentPage }) => {
       </div>
       {comments &&
         <>
-          <ul className="comments__comments">
-            {getSortComments().map(comment => (
-              <li key={comment.id} className='comments__comment'>
-                <Comment
-                  name={comment.name}
-                  text={comment.text}
-                  time={comment.created_at} />
-              </li>
-            ))}
-          </ul>
-
+          <CMCommentsList activeSort={activeSort} />
           <CMPagination links={comments.links.slice(1, -1)} />
 
           {currentPage !== comments.last_page &&

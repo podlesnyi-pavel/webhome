@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <Context.Provider value={{
-      currentPage, setPage
+      comments, currentPage, setPage
     }}>
       <div className="App">
         <FormPost currentPage={currentPage} lastPage={comments.last_page} />
