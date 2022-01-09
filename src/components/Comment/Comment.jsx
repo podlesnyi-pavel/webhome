@@ -41,14 +41,12 @@ export const Comment = ({ name, text, time }) => {
 
   return (
     <>
-      <div className="comment__icon comment__item">
-        {/* <img src="#" alt="icon user's" /> */}
-      </div>
+      <div className="comment__icon comment__item"></div>
       <div className="comment__likes comment__item">&#10084; 21</div>
       <div className="comment__descr comment__item comment__item--shrink--1">
         <div className='comment__top'>
           <div className="comment__name">{name}</div>
-          <div className="comment__days-ago comment__item">
+          <div className="comment__days-ago">
             {getDifferenceTime()}
           </div>
         </div>

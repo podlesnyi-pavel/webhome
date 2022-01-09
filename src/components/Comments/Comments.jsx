@@ -1,10 +1,10 @@
 import './Comments.scss';
 import { useState } from 'react';
-import classNames from 'classnames';
 import { Comment } from '../Comment/Comment';
 import { CMSortButton } from '../CMSortButton/CMSortButton';
+import { CMPagination } from '../CMPagination/CMPagination';
 
-export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
+export const Comments = ({ nextPage, comments, currentPage }) => {
   const [activeSort, setActiveSort] = useState('Most Liked');
 
   const getSortComments = () => {
@@ -59,28 +59,8 @@ export const Comments = ({ nextPage, comments, setPage, currentPage }) => {
               </li>
             ))}
           </ul>
-          
-          <div className="comments__pagination">
-            {comments.links.slice(1, -1).map((link, i) => {
-              if (!link.url) {
-                return <div key={i} className='comments__pagination-dots'>...</div>
-              }
 
-              return (
-                <button
-                  key={i}
-                  className={classNames(
-                    'comments__pagination-btn',
-                    link.label === currentPage && 'comments__pagination-btn--active',
-                  )}
-                  value={link.label}
-                  onClick={setPage}
-                >
-                  {link.label}
-                </button>
-              )
-            })}
-          </div>
+          <CMPagination links={comments.links.slice(1, -1)} />
 
           {currentPage !== comments.last_page &&
             <button className='comments__next-button' onClick={nextPage}>

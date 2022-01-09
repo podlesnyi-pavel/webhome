@@ -1,17 +1,23 @@
 import './FormPost.scss';
 import { useState } from "react";
 
-export const FormPost = ({ createNewComment }) => {
+export const FormPost = () => {
   const [name, setName] = useState('');
   const [newComments, setNewComments] = useState('');
 
   const postComment = (event) => {
     event.preventDefault();
 
-    createNewComment({
-      name: name,
-      text: newComments,
-    })
+    fetch('https://jordan.ashton.fashion/api/goods/30/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        name: name,
+        text: newComments,
+      }),
+    });
 
     setName('');
     setNewComments('');
@@ -46,10 +52,7 @@ export const FormPost = ({ createNewComment }) => {
           onChange={(event) => setNewComments(event.target.value)}
         />
 
-        <button
-          className="form-post__submit"
-          type="submit"
-        >
+        <button className="form-post__submit" type="submit">
           post
         </button>
       </label>
