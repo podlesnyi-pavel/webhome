@@ -46,7 +46,7 @@ export const Comment = ({ name, text, time }) => {
       <div className="comment__descr comment__item comment__item--shrink--1">
         <div className='comment__top'>
           <div className="comment__name">{name}</div>
-          <div className="comment__days-ago">
+          <div className="comment__days-ago comment__item">
             {getDifferenceTime()}
           </div>
         </div>
